@@ -1,0 +1,21 @@
+{
+  "name": "pimax/bitrix24-bot-php",
+  "description": "Bitrix24 Messenger Bot PHP API",
+  "homepage": "https://github.com/pimax/bitrix24-bot-php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Max Pinyugin",
+      "email": "m.pinyugin@gmail.com",
+      "homepage": "http://russian-developers.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+
+  "autoload": {
+    "psr-4": { "pimax\\": "" }
+  }
+}

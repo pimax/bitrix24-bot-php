@@ -33,7 +33,7 @@ class Link
     {
         $this->dialog_id = $dialog_id;
         $this->title = $title;
-        $this->url = $url;
+        $this->link = $url;
     }
 
     /**

@@ -53,7 +53,6 @@ class BotApp
     {
         $this->auth = $auth;
         $this->params = $this->loadParams();
-
         $this->language = $this->params[$_REQUEST['auth']['application_token']]['LANGUAGE_ID'];
         $this->messages = $this->loadMessages();
     }
@@ -85,7 +84,7 @@ class BotApp
     {
         $configFileName = '/config_' . trim(str_replace('.', '_', $_REQUEST['auth']['domain'])) . '.php';
 
-        if (file_exists($configFileName)) {
+        if (file_exists(__DIR__.'/../../../'.$configFileName)) {
             unlink($configFileName);
         }
 
@@ -114,7 +113,7 @@ class BotApp
         $config = "<?php\n";
         $config .= "\return " . var_export($params, true) . ";\n";
         $configFileName = '/config_' . trim(str_replace('.', '_', $_REQUEST['auth']['domain'])) . '.php';
-        file_put_contents(__DIR__ . $configFileName, $config);
+        file_put_contents(__DIR__ . '/../../../' . $configFileName, $config);
 
         return true;
     }
@@ -169,8 +168,8 @@ class BotApp
     protected function loadParams()
     {
         $configFileName = '/config_' . trim(str_replace('.', '_', $_REQUEST['auth']['domain'])) . '.php';
-        if (file_exists(__DIR__ . $configFileName)) {
-            return include_once __DIR__ . $configFileName;
+        if (file_exists(realpath(__DIR__ . '/../../../' .  $configFileName))) {
+            return include __DIR__ . '/../../../' . $configFileName;
         }
 
         return false;
@@ -183,8 +182,8 @@ class BotApp
      */
     protected function loadMessages()
     {
-        if ($this->language != $this->default_language && file_exists(__DIR__.'/messages/'.$this->language.'.php')) {
-            return include __DIR__.'/messages/'.$this->messages.'.php';
+        if ($this->language != $this->default_language && file_exists(realpath(__DIR__.'/../../../messages/'.$this->language.'.php'))) {
+            return include __DIR__.'/../../../messages/'.$this->language.'.php';
         }
 
         return [];

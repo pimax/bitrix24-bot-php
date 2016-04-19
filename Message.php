@@ -45,7 +45,7 @@ class Message
 
     /**
      * Get message data
-     * 
+     *
      * @return array
      */
     public function getData()
@@ -59,7 +59,11 @@ class Message
         $return['MESSAGE'] = $this->message;
 
         if ($this->attach){
-            $return['ATTACH'] = $this->attach;
+            $return['ATTACH'] = [];
+
+            foreach ($this->attach as $attach) {
+                $return['ATTACH'][] = $attach->getData();
+            }
         }
 
         return $return;

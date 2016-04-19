@@ -10,13 +10,6 @@ namespace pimax\bitrix24;
 class BotApp
 {
     /**
-     * Log file name
-     *
-     * @var string
-     */
-    protected $log_file = "imbot.log";
-
-    /**
      * Current language
      *
      * @var string
@@ -142,25 +135,6 @@ class BotApp
     }
 
     /**
-     * Log data to file
-     *
-     * @param mixed $data Data
-     * @param string $title Title
-     * @return bool
-     */
-    public function log($data, $title = '')
-    {
-        $log = "\n------------------------\n";
-        $log .= date("Y.m.d G:i:s") . "\n";
-        $log .= (strlen($title) > 0 ? $title : 'DEBUG') . "\n";
-        $log .= print_r($data, 1);
-        $log .= "\n------------------------\n";
-        file_put_contents(__DIR__ . '/'.$this->log_file, $log, FILE_APPEND);
-
-        return true;
-    }
-
-    /**
      * API request
      *
      * @param string $method Method
@@ -204,7 +178,7 @@ class BotApp
 
     /**
      * Load i18n messages
-     * 
+     *
      * @return array|mixed
      */
     protected function loadMessages()

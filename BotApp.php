@@ -111,7 +111,7 @@ class BotApp
     public function saveParams($params)
     {
         $config = "<?php\n";
-        $config .= "\return " . var_export($params, true) . ";\n";
+        $config .= "return " . var_export($params, true) . ";\n";
         $configFileName = '/config_' . trim(str_replace('.', '_', $_REQUEST['auth']['domain'])) . '.php';
         file_put_contents(__DIR__ . '/../../../' . $configFileName, $config);
 
